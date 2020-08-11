@@ -14,7 +14,7 @@ const CreateUser = () => {
     const loadData = async () => {
       try {
         await axios
-          .get("http://localhost:4000/api/users", { cancelToken: source.token })
+          .get("https://noteapp-back.herokuapp.com/api/users", { cancelToken: source.token })
           .then((res) => {
             setUsers(res.data);
           });
@@ -42,14 +42,14 @@ const CreateUser = () => {
 
   const onSubmit = async (_, e) => {
     e.preventDefault();
-    await axios.post("http://localhost:4000/api/users", {
+    await axios.post("https://noteapp-back.herokuapp.com/api/notes", {
       username: userName,
     });
     e.target.reset();
   };
 
   const deleteUser = async (id) => {
-    await axios.delete("http://localhost:4000/api/users/" + id);
+    await axios.delete("https://noteapp-back.herokuapp.com/api/notes" + id);
   };
 
   return (

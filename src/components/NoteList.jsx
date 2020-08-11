@@ -13,7 +13,7 @@ const NoteList = () => {
     const loadData = async () => {
       try {
         await axios
-          .get("http://localhost:4000/api/notes", { cancelToken: source.token })
+          .get("https://noteapp-back.herokuapp.com/api/notes", { cancelToken: source.token })
           .then((res) => {
             setNotes(res.data);
           });
@@ -32,7 +32,7 @@ const NoteList = () => {
   }, [notes]);
 
   const deleteNote = async (id) => {
-    await axios.delete("http://localhost:4000/api/notes/" + id);
+    await axios.delete("https://noteapp-back.herokuapp.com/api/notes" + id);
   };
 
   return (

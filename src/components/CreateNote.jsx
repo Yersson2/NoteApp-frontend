@@ -23,7 +23,7 @@ const CreateNote = (props) => {
     const loadData = async () => {
       try {
         await axios
-          .get("http://localhost:4000/api/users", { cancelToken: source.token })
+          .get("https://noteapp-back.herokuapp.com/api/users", { cancelToken: source.token })
           .then((res) => {
             if (res.data.length > 0) {
               setUsers(res.data.map((user) => user.username));
@@ -32,7 +32,7 @@ const CreateNote = (props) => {
           });
         if (props.match.params.id) {
           const res = await axios.get(
-            "http://localhost:4000/api/notes/" + props.match.params.id,
+            "https://noteapp-back.herokuapp.com/api/notes" + props.match.params.id,
             { cancelToken: source.token }
           );
           setInput({
@@ -72,9 +72,9 @@ const CreateNote = (props) => {
     };
 
     if (input.editing) {
-      await axios.put("http://localhost:4000/api/notes/" + input._id, newNote);
+      await axios.put("https://noteapp-back.herokuapp.com/api/notes" + input._id, newNote);
     } else {
-      await axios.post("http://localhost:4000/api/notes", newNote);
+      await axios.post("https://noteapp-back.herokuapp.com/api/notes", newNote);
     }
     props.history.push("/");
   };
